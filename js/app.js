@@ -3,6 +3,7 @@
  */
 const cards = document.getElementsByClassName('card');
 let openedCards = [];
+let moveCounter = 0;
 console.log(cards);
 
 /*
@@ -46,8 +47,8 @@ function compareCards() {
     if(len === 2) {
             // if cards are identical
             if(openedCards[0] === openedCards[1]){
-                openedCards[0].classList.add("match");
-                openedCards[1].classList.add("match");
+                openedCards[0].classList.add('match');
+                openedCards[1].classList.add('match');
                 openedCards = [];
             
         } else {
@@ -60,11 +61,26 @@ function compareCards() {
             openedCards = [];
         }, 300);
         }
-                
+            moveCounter++;
+            console.log('move: ' + moveCounter);
+            // why this doesn't work
+            //document.getElementsByClassName(moveCounter;
+            // this is why i added jquery
+            $( ".moves" ).html(moveCounter);
+            countMatch = document.getElementsByClassName('match').length;
+            console.log('matched cards ' + countMatch);
+            if (countMatch==16) {
+                alert('Final moves:' + moveCounter);
+            };  
     }
 };
 
+// countMatch = document.getElementsByClassName('match');
+// console.log(countMatch);
 
+// numItems = $('.match').length; 
+
+        
 
 // loop through each card and create its HTML
 
