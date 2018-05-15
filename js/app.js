@@ -2,6 +2,7 @@
  * Create a list that holds all of your cards
  */
 const cards = document.getElementsByClassName('card');
+let openedCards = [];
 console.log(cards);
 
 /*
@@ -25,6 +26,48 @@ function shuffle(array) {
 
     return array;
 }
+
+// set up the event listener for a card. If a card is clicked
+for (var i = 0; i < cards.length; i++){
+    cards[i].addEventListener("click", showCards);
+    cards[i].addEventListener("click", compareCards);
+};
+
+// function open cards
+function showCards(){
+    this.classList.toggle("open");
+    this.classList.toggle("show");
+};
+
+// function checking if cards are identical
+function compareCards() {
+    openedCards.push(this);
+    var len = openedCards.length;
+    if(len === 2) {
+            // if cards are identical
+            if(openedCards[0] === openedCards[1]){
+                openedCards[0].classList.add("match");
+                openedCards[1].classList.add("match");
+                openedCards = [];
+            
+        } else {
+            //if cards are different
+        setTimeout(function(){
+            openedCards[0].classList.toggle("open");
+            openedCards[0].classList.toggle("show");
+            openedCards[1].classList.toggle("open");
+            openedCards[1].classList.toggle("show");
+            openedCards = [];
+        }, 300);
+        }
+                
+    }
+};
+
+
+
+// loop through each card and create its HTML
+
 
 
 /*
