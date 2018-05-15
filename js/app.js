@@ -1,7 +1,8 @@
 /*
  * Create a list that holds all of your cards
  */
-
+const cards = document.getElementsByClassName('card');
+console.log(cards);
 
 /*
  * Display the cards on the page
