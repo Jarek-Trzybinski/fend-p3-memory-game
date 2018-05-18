@@ -46,7 +46,7 @@ function compareCards() {
     var len = openedCards.length;
     if(len === 2) {
             // if cards are identical
-            if(openedCards[0] === openedCards[1]){
+            if(openedCards[0].querySelector('i').getAttribute('class')===openedCards[1].querySelector('i').getAttribute('class') ){
                 openedCards[0].classList.add('match');
                 openedCards[1].classList.add('match');
                 openedCards = [];
