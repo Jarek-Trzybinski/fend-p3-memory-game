@@ -2,7 +2,7 @@
  * Create a list that holds all of your cards
  */
 let cards = document.getElementsByClassName('card');
-let cardsArray = Array.prototype.slice.call( cards )
+let cardsArray = Array.prototype.slice.call(cards);
 console.log(cardsArray[1]);
 typeof(cards);
 let openedCards = [];
@@ -18,7 +18,7 @@ let moveCounter = 0;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -30,10 +30,30 @@ function shuffle(array) {
 
     return array;
 }
-newDeck = shuffle(cardsArray);
-console.log(cardsArray[1]);
+shuffledCardsArray = shuffle(cardsArray);
+console.log(shuffledCardsArray[1]);
+
+//empty set of cards
+
+
+//create new shuffled set of cards /
+function newShuffledDeck() {
+    let deck = document.querySelector('.deck');
+    let emptyDeck = deck.innerHTML="";//why after removing this line code still working and still has 16 elements?
+    console.log(deck);
+    let arrayLength = shuffledCardsArray.length;
+        for (let i = 0; i < arrayLength; i++) {
+            //deck.appendChild
+            
+            document.querySelector('.deck').appendChild(shuffledCardsArray[i]);
+    //Do something
+}
+console.log(arrayLength);
+}
+newShuffledDeck(); 
+
 // set up the event listener for a card. If a card is clicked
-for (var i = 0; i < cards.length; i++){
+for (let i = 0; i < cards.length; i++){
     cards[i].addEventListener("click", showCards);
     cards[i].addEventListener("click", compareCards);
 };
