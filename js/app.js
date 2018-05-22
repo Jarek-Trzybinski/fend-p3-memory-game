@@ -1,10 +1,13 @@
 /*
  * Create a list that holds all of your cards
  */
-const cards = document.getElementsByClassName('card');
+let cards = document.getElementsByClassName('card');
+let cardsArray = Array.prototype.slice.call( cards )
+console.log(cardsArray[1]);
+typeof(cards);
 let openedCards = [];
 let moveCounter = 0;
-console.log(cards);
+
 
 /*
  * Display the cards on the page
@@ -27,7 +30,8 @@ function shuffle(array) {
 
     return array;
 }
-
+newDeck = shuffle(cardsArray);
+console.log(cardsArray[1]);
 // set up the event listener for a card. If a card is clicked
 for (var i = 0; i < cards.length; i++){
     cards[i].addEventListener("click", showCards);
