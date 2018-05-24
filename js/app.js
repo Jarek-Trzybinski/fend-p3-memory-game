@@ -16,6 +16,10 @@ let moveCounter = 0;
  *   - add each card's HTML to the page
  */
 
+//refresh page by clicking restart buton
+let refreshButton = document.querySelector('.restart');
+refreshButton.addEventListener("click", function(){ location.reload(); });
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     let currentIndex = array.length, temporaryValue, randomIndex;
