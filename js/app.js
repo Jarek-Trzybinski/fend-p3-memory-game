@@ -7,14 +7,23 @@ console.log(cardsArray[1]);
 typeof(cards);
 let openedCards = [];
 let moveCounter = 0;
+let minute = 0;
+let second = 0;
+let timerScreen = document.querySelector('.timer');
 
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+function timer() {
+    setInterval(function(){
+        second++;
+        
+        if (second == 60) {
+            minute++;
+            second=0;
+        }
+        timerScreen.innerHTML= minute + "min" + second + "s";
+    } , 1000);
+};
+timer();
 
 //refresh page by clicking restart buton
 let refreshButton = document.querySelector('.restart');
