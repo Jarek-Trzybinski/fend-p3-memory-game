@@ -75,6 +75,7 @@ for (let i = 0; i < cards.length; i++){
 function showCards(){
     this.classList.toggle("open");
     this.classList.toggle("show");
+    
 };
 
 // function checking if cards are identical
@@ -99,6 +100,7 @@ function compareCards() {
         }, 300);
         }
             moveCounter++;
+            
             console.log('move: ' + moveCounter);
             // why this doesn't work
             //document.getElementsByClassName(moveCounter;
@@ -108,6 +110,8 @@ function compareCards() {
             console.log('matched cards ' + countMatch);
             if (countMatch==16) {
                 alert('Final moves:' + moveCounter);
+                finalTimerScreen = document.querySelector('.timer').innerHTML;
+                alert('Final time:' + finalTimerScreen);
             };  
     }
 };
