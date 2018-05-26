@@ -10,7 +10,22 @@ let moveCounter = 0;
 let minute = 0;
 let second = 0;
 let timerScreen = document.querySelector('.timer');
+let stars = document.querySelector('.stars');
 
+function starRating() {
+    switch (moveCounter) {
+        case 22:
+        stars.querySelector('li').remove();
+        break;
+
+        case 34:
+        stars.querySelector('li').remove();
+        break;
+    };
+
+    
+    //iffar fa-star
+}
 
 function timer() {
     setInterval(function(){
@@ -100,6 +115,7 @@ function compareCards() {
         }, 300);
         }
             moveCounter++;
+            starRating();
             
             console.log('move: ' + moveCounter);
             // why this doesn't work
@@ -112,6 +128,8 @@ function compareCards() {
                 alert('Final moves:' + moveCounter);
                 finalTimerScreen = document.querySelector('.timer').innerHTML;
                 alert('Final time:' + finalTimerScreen);
+                finalStars = document.querySelector('.stars').innerHTML;
+                alert('Stars: ' + finalStars);
             };  
     }
 };
