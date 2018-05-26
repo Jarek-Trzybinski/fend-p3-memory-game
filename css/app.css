@@ -91,12 +91,21 @@ h1 {
     margin-bottom: 10px;
 }
 
+.final-stars li {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
 .score-panel .stars {
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
+
+
 
 .score-panel .stars li {
     list-style: none;
@@ -106,4 +115,33 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    width: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: darkgray;
+    visibility: hidden;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
+.close-button {
+    float: right;
+    width: 1.5rem;
+    text-align: center;
+    border-radius: 0.25rem;
+    background-color: grey;    
+}
+.show-modal {
+    visibility: visible;
 }

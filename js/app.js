@@ -11,6 +11,17 @@ let minute = 0;
 let second = 0;
 let timerScreen = document.querySelector('.timer');
 let stars = document.querySelector('.stars');
+const modal = document.querySelector('.modal');
+const closeButton = document.querySelector('.close-button');
+let modalContent = document.querySelector('.modal-content');
+
+function toggleModal() {
+    modal.classList.toggle('show-modal');
+}
+
+//close button by click button
+closeButton.addEventListener('click', toggleModal);
+
 
 function starRating() {
     switch (moveCounter) {
@@ -124,12 +135,27 @@ function compareCards() {
             $( ".moves" ).html(moveCounter);
             countMatch = document.getElementsByClassName('match').length;
             console.log('matched cards ' + countMatch);
-            if (countMatch==16) {
-                alert('Final moves:' + moveCounter);
+            if (countMatch==2) {
+                finalInfo = '<h3>Final moves: ' + moveCounter + '</h3>';
                 finalTimerScreen = document.querySelector('.timer').innerHTML;
-                alert('Final time:' + finalTimerScreen);
+
+                finalInfo += '<h3> Final time: ' + finalTimerScreen + '</h3>';
+
+                finalStars = document.querySelector('.stars').innerHTML;
+                finalInfo += ' <ul class="final-stars">' + finalStars + '</ul>';
+
+
+                modalContent.innerHTML = finalInfo;
+                
+                toggleModal();
+
+                /*
+               
+                
                 finalStars = document.querySelector('.stars').innerHTML;
                 alert('Stars: ' + finalStars);
+                */
+
             };  
     }
 };
