@@ -156,7 +156,8 @@ h1 {
 
 .show-modal {
     opacity: 1;
-    visibility: visible;    
+    visibility: visible;
+    z-index: 1;    
 }
 
 .end-game-info {
