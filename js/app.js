@@ -3,16 +3,32 @@
  */
 let cards = document.getElementsByClassName('card');
 let cardsArray = Array.prototype.slice.call(cards);
-console.log(cardsArray[1]);
-typeof(cards);
 let openedCards = [];
 let moveCounter = 0;
 let minute = 0;
 let second = 0;
 let timerScreen = document.querySelector('.timer');
 let stars = document.querySelector('.stars');
-const modal = document.querySelector('.modal');
-const closeButton = document.querySelector('.close-button');
+
+//modal variables
+let modal = document.querySelector('.modal');
+let closeButton = document.querySelector('.close-button');
+
+//modal functions
+function toggleModal() {
+    modal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+    if (event.target === modal) {
+        toggleModal();
+    }
+}
+
+//event lisners for modal
+closeButton.addEventListener('click', toggleModal);
+window.addEventListener('click', windowOnClick);
+
 let modalContent = document.querySelector('.modal-content');
 
 function toggleModal() {
@@ -33,9 +49,6 @@ function starRating() {
         stars.querySelector('li').remove();
         break;
     };
-
-    
-    //iffar fa-star
 }
 
 function timer() {
@@ -136,25 +149,26 @@ function compareCards() {
             countMatch = document.getElementsByClassName('match').length;
             console.log('matched cards ' + countMatch);
             if (countMatch==2) {
+                
                 finalInfo = '<h3>Final moves: ' + moveCounter + '</h3>';
+                
+                
                 finalTimerScreen = document.querySelector('.timer').innerHTML;
 
                 finalInfo += '<h3> Final time: ' + finalTimerScreen + '</h3>';
 
                 finalStars = document.querySelector('.stars').innerHTML;
-                finalInfo += ' <ul class="final-stars">' + finalStars + '</ul>';
+                finalInfo += '<h3>Final Stars:</h3> <ul class="final-stars">' + finalStars + '</ul>';
+                finalInfo += '<input class="playagain-button" type="button" value="Play Again" onClick="window.location.reload()">'
 
+                 
+                //modalContent.innerHTML += finalInfo;
 
-                modalContent.innerHTML = finalInfo;
+                let endGameInfo = document.querySelector('.end-game-info');
+                endGameInfo.innerHTML = finalInfo;
                 
+                //
                 toggleModal();
-
-                /*
-               
-                
-                finalStars = document.querySelector('.stars').innerHTML;
-                alert('Stars: ' + finalStars);
-                */
 
             };  
     }
