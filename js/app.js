@@ -35,10 +35,6 @@ function toggleModal() {
     modal.classList.toggle('show-modal');
 }
 
-//close button by click button
-closeButton.addEventListener('click', toggleModal);
-
-
 function starRating() {
     switch (moveCounter) {
         case 22:
@@ -104,24 +100,29 @@ console.log(arrayLength);
 }
 newShuffledDeck(); 
 
+
 // set up the event listener for a card. If a card is clicked
 for (let i = 0; i < cards.length; i++){
-    cards[i].addEventListener("click", showCards);
     cards[i].addEventListener("click", compareCards);
 };
 
 // function open cards
-function showCards(){
-    this.classList.toggle("open");
-    this.classList.toggle("show");
-    
-};
+
 
 // function checking if cards are identical
 function compareCards() {
-    openedCards.push(this);
-    var len = openedCards.length;
-    if(len === 2) {
+    
+    if(!this.classList.contains("show") && !this.classList.contains("open") ) {
+        openedCards.push(this);
+        this.classList.toggle("open");
+        this.classList.toggle("show");
+    }
+    
+    //if(this.classList.contains("show") && this.classList.contains("open")) {}
+    //openedCards.push(this);
+    //openedCards.push(this);
+    
+    if(openedCards.length == 2) {
             // if cards are identical
             if(openedCards[0].querySelector('i').getAttribute('class')===openedCards[1].querySelector('i').getAttribute('class') ){
                 openedCards[0].classList.add('match');
@@ -135,6 +136,10 @@ function compareCards() {
             openedCards[0].classList.toggle("show");
             openedCards[1].classList.toggle("open");
             openedCards[1].classList.toggle("show");
+            openedCards[0].classList.remove("disabled");
+            openedCards[1].classList.remove("disabled");
+
+            
             openedCards = [];
         }, 300);
         }
@@ -148,7 +153,7 @@ function compareCards() {
             $( ".moves" ).html(moveCounter);
             countMatch = document.getElementsByClassName('match').length;
             console.log('matched cards ' + countMatch);
-            if (countMatch==2) {
+            if (countMatch==16) {
                 
                 finalInfo = '<h3>Final moves: ' + moveCounter + '</h3>';
                 
