@@ -97,10 +97,7 @@ function newShuffledDeck() {
     console.log(deck);
     let arrayLength = shuffledCardsArray.length;
         for (let i = 0; i < arrayLength; i++) {
-            //deck.appendChild
-            
             document.querySelector('.deck').appendChild(shuffledCardsArray[i]);
-            //Do something
         }
 }
 
