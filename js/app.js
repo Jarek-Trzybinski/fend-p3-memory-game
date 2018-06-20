@@ -1,6 +1,4 @@
-/*
- * Create a list that holds all of your cards
- */
+// list of variables
 let cards = document.getElementsByClassName('card');
 let cardsArray = Array.prototype.slice.call(cards);
 let openedCards = [];
@@ -10,9 +8,12 @@ let second = 0;
 let timerScreen = document.querySelector('.timer');
 let stars = document.querySelector('.stars');
 
+
 //modal variables
 let modal = document.querySelector('.modal');
 let closeButton = document.querySelector('.close-button');
+let modalContent = document.querySelector('.modal-content')
+
 
 //modal functions
 function toggleModal() {
@@ -25,16 +26,17 @@ function windowOnClick(event) {
     }
 }
 
+
 //event lisners for modal
 closeButton.addEventListener('click', toggleModal);
 window.addEventListener('click', windowOnClick);
-
-let modalContent = document.querySelector('.modal-content');
 
 function toggleModal() {
     modal.classList.toggle('show-modal');
 }
 
+
+//star rating function 
 function starRating() {
     switch (moveCounter) {
         case 22:
@@ -47,6 +49,7 @@ function starRating() {
     };
 }
 
+
 function timer() {
     second++;    
     if (second == 60) {
@@ -56,20 +59,20 @@ function timer() {
     timerScreen.innerHTML= minute + "min" + second + "s";
 }
 
-// function that starts time
+// function that starts timer
 let time = null;
 let startTimer = function() {
    time =  setInterval(timer , 1000);
 }
 
-//function that stops time
+//function that stops timer
 let stopTimer = function() {clearInterval(time)}
 
 
-
-//refresh page by clicking restart buton
+// refresh button
 let refreshButton = document.querySelector('.restart');
 refreshButton.addEventListener("click", function(){ location.reload(); });
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -82,29 +85,25 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 shuffledCardsArray = shuffle(cardsArray);
-console.log(shuffledCardsArray[1]);
-
-//empty set of cards
 
 
 //create new shuffled set of cards /
 function newShuffledDeck() {
     let deck = document.querySelector('.deck');
-    let emptyDeck = deck.innerHTML="";//why after removing this line code still working and still has 16 elements?
+    let emptyDeck = deck.innerHTML="";
     console.log(deck);
     let arrayLength = shuffledCardsArray.length;
         for (let i = 0; i < arrayLength; i++) {
             //deck.appendChild
             
             document.querySelector('.deck').appendChild(shuffledCardsArray[i]);
-    //Do something
+            //Do something
+        }
 }
-console.log(arrayLength);
-}
+
 newShuffledDeck(); 
 
 startTimer();
@@ -113,22 +112,15 @@ for (let i = 0; i < cards.length; i++){
     cards[i].addEventListener("click", compareCards);
 };
 
-// function open cards
-
 
 // function checking if cards are identical
 function compareCards() {
-    
     if(!this.classList.contains("show") && !this.classList.contains("open") ) {
         openedCards.push(this);
         this.classList.toggle("open");
         this.classList.toggle("show");
     }
-    
-    //if(this.classList.contains("show") && this.classList.contains("open")) {}
-    //openedCards.push(this);
-    //openedCards.push(this);
-    
+
     if(openedCards.length == 2) {
             // if cards are identical
             if(openedCards[0].querySelector('i').getAttribute('class')===openedCards[1].querySelector('i').getAttribute('class') ){
@@ -145,7 +137,6 @@ function compareCards() {
             openedCards[1].classList.toggle("show");
             openedCards[0].classList.remove("disabled");
             openedCards[1].classList.remove("disabled");
-
             
             openedCards = [];
         }, 300);
@@ -153,42 +144,37 @@ function compareCards() {
             moveCounter++;
             starRating();
             
-            console.log('move: ' + moveCounter);
-            // why this doesn't work
-            //document.getElementsByClassName(moveCounter;
-            // this is why i added jquery
+            //checking how many cards matched
             $( ".moves" ).html(moveCounter);
             countMatch = document.getElementsByClassName('match').length;
-            console.log('matched cards ' + countMatch);
-            if (countMatch==2) {
-                stopTimer();
-                
-                finalInfo = '<h3>Final moves: ' + moveCounter + '</h3>';
-                
-                
-                finalTimerScreen = document.querySelector('.timer').innerHTML;
 
-                finalInfo += '<h3> Final time: ' + finalTimerScreen + '</h3>';
 
-                finalStars = document.querySelector('.stars').innerHTML;
-                finalInfo += '<h3>Final Stars:</h3> <ul class="final-stars">' + finalStars + '</ul>';
-                finalInfo += '<input class="playagain-button" type="button" value="Play Again" onClick="window.location.reload()">'
-
-                 
-                //modalContent.innerHTML += finalInfo;
+           if (countMatch==16) {
+               stopTimer();
+                
+               //generate final modal content
+               finalTimerScreen = document.querySelector('.timer').innerHTML;
+               finalStars = document.querySelector('.stars').innerHTML;
+               
+               finalInfo = '<h3>Final moves: ' + moveCounter + '</h3>';
+               finalInfo += '<h3> Final time: ' + finalTimerScreen + '</h3>';
+               finalInfo += '<h3>Final Stars:</h3> <ul class="final-stars">' + finalStars + '</ul>';
+               finalInfo += '<input class="playagain-button" type="button" value="Play Again" onClick="window.location.reload()">'
 
                 let endGameInfo = document.querySelector('.end-game-info');
                 endGameInfo.innerHTML = finalInfo;
                 
-                //
+                //show final modal
                 toggleModal();
-
             };  
-    }
+    };
 };
 
 /*
-* timer stop 
-* tidy up code
+TO DO LIST:
 * responsive webside
+
+TO DO LIST FOR FUTURE:
+*animation effect for cards
+*start button and count down 3.. 2.. 1 .. start 
 */
