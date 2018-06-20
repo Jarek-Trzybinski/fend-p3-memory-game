@@ -48,17 +48,24 @@ function starRating() {
 }
 
 function timer() {
-    setInterval(function(){
-        second++;
-        
-        if (second == 60) {
-            minute++;
-            second=0;
-        }
-        timerScreen.innerHTML= minute + "min" + second + "s";
-    } , 1000);
-};
-timer();
+    second++;    
+    if (second == 60) {
+        minute++;
+        second=0;
+    }
+    timerScreen.innerHTML= minute + "min" + second + "s";
+}
+
+// function that starts time
+let time = null;
+let startTimer = function() {
+   time =  setInterval(timer , 1000);
+}
+
+//function that stops time
+let stopTimer = function() {clearInterval(time)}
+
+
 
 //refresh page by clicking restart buton
 let refreshButton = document.querySelector('.restart');
@@ -100,7 +107,7 @@ console.log(arrayLength);
 }
 newShuffledDeck(); 
 
-
+startTimer();
 // set up the event listener for a card. If a card is clicked
 for (let i = 0; i < cards.length; i++){
     cards[i].addEventListener("click", compareCards);
@@ -153,7 +160,8 @@ function compareCards() {
             $( ".moves" ).html(moveCounter);
             countMatch = document.getElementsByClassName('match').length;
             console.log('matched cards ' + countMatch);
-            if (countMatch==16) {
+            if (countMatch==2) {
+                stopTimer();
                 
                 finalInfo = '<h3>Final moves: ' + moveCounter + '</h3>';
                 
@@ -179,24 +187,8 @@ function compareCards() {
     }
 };
 
-// countMatch = document.getElementsByClassName('match');
-// console.log(countMatch);
-
-// numItems = $('.match').length; 
-
-        
-
-// loop through each card and create its HTML
-
-
-
 /*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+* timer stop 
+* tidy up code
+* responsive webside
+*/
