@@ -56,7 +56,7 @@ function timer() {
         minute++;
         second=0;
     }
-    timerScreen.innerHTML= minute + "min" + second + "s";
+    timerScreen.innerHTML= minute + "m " + second + "s";
 }
 
 // function that starts timer
@@ -146,7 +146,7 @@ function compareCards() {
             countMatch = document.getElementsByClassName('match').length;
 
 
-           if (countMatch==16) {
+           if (countMatch==2) {
                stopTimer();
                 
                //generate final modal content
@@ -170,6 +170,7 @@ function compareCards() {
 /*
 TO DO LIST:
 * responsive webside
+* write readme
 
 TO DO LIST FOR FUTURE:
 *animation effect for cards
