@@ -8,12 +8,10 @@ let second = 0;
 let timerScreen = document.querySelector('.timer');
 let stars = document.querySelector('.stars');
 
-
 //modal variables
 let modal = document.querySelector('.modal');
 let closeButton = document.querySelector('.close-button');
-let modalContent = document.querySelector('.modal-content')
-
+let modalContent = document.querySelector('.modal-content');
 
 //modal functions
 function toggleModal() {
@@ -26,15 +24,9 @@ function windowOnClick(event) {
     }
 }
 
-
 //event lisners for modal
 closeButton.addEventListener('click', toggleModal);
 window.addEventListener('click', windowOnClick);
-
-function toggleModal() {
-    modal.classList.toggle('show-modal');
-}
-
 
 //star rating function 
 function starRating() {
@@ -67,7 +59,6 @@ let startTimer = function() {
 
 //function that stops timer
 let stopTimer = function() {clearInterval(time)}
-
 
 // refresh button
 let refreshButton = document.querySelector('.restart');
@@ -136,7 +127,7 @@ function compareCards() {
             openedCards[1].classList.remove("disabled");
             
             openedCards = [];
-        }, 300);
+        }, 265);
         }
             moveCounter++;
             starRating();
@@ -146,7 +137,7 @@ function compareCards() {
             countMatch = document.getElementsByClassName('match').length;
 
 
-           if (countMatch==2) {
+           if (countMatch==16) {
                stopTimer();
                 
                //generate final modal content
@@ -168,10 +159,6 @@ function compareCards() {
 };
 
 /*
-TO DO LIST:
-* responsive webside
-* write readme
-
 TO DO LIST FOR FUTURE:
 *animation effect for cards
 *start button and count down 3.. 2.. 1 .. start 
