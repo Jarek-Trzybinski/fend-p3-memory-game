@@ -38,7 +38,7 @@ function starRating() {
         case 34:
         stars.querySelector('li').remove();
         break;
-    };
+    }
 }
 
 
@@ -55,10 +55,10 @@ function timer() {
 let time = null;
 let startTimer = function() {
    time =  setInterval(timer , 1000);
-}
+};
 
 //function that stops timer
-let stopTimer = function() {clearInterval(time)}
+let stopTimer = function() {clearInterval(time)};
 
 // refresh button
 let refreshButton = document.querySelector('.restart');
@@ -98,7 +98,7 @@ startTimer();
 // set up the event listener for a card. If a card is clicked
 for (let i = 0; i < cards.length; i++){
     cards[i].addEventListener("click", compareCards);
-};
+}
 
 
 // function checking if cards are identical
@@ -144,19 +144,21 @@ function compareCards() {
                finalTimerScreen = document.querySelector('.timer').innerHTML;
                finalStars = document.querySelector('.stars').innerHTML;
                
-               finalInfo = '<h3>Final moves: ' + moveCounter + '</h3>';
-               finalInfo += '<h3> Final time: ' + finalTimerScreen + '</h3>';
-               finalInfo += '<h3>Final Stars:</h3> <ul class="final-stars">' + finalStars + '</ul>';
-               finalInfo += '<input class="playagain-button" type="button" value="Play Again" onClick="window.location.reload()">'
+               finalInfo = `
+                            <h3>Final moves: ${moveCounter}</h3>
+                            <h3> Final time: ${finalTimerScreen}</h3>
+                            <h3>Final Stars:</h3> <ul class="final-stars"> ${finalStars}</ul>
+                            <input class="playagain-button" type="button" value="Play Again" onClick="window.location.reload()">
+                            `;
 
                 let endGameInfo = document.querySelector('.end-game-info');
                 endGameInfo.innerHTML = finalInfo;
                 
                 //show final modal
                 toggleModal();
-            };  
-    };
-};
+            }
+    }
+}
 
 /*
 TO DO LIST FOR FUTURE:

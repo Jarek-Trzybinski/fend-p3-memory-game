@@ -5,3 +5,7 @@ Game starts when page loads. You need to find same symbols in the smallest possi
 
 ## Author
 Jaroslaw Trzybinski
+
+## Dependencies
+Html, JavaScript, Css, jquery
+Shuffle function from http://stackoverflow.com/a/2450976
