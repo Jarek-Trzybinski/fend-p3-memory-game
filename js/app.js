@@ -89,7 +89,7 @@ function newShuffledDeck() {
     let arrayLength = shuffledCardsArray.length;
         for (let i = 0; i < arrayLength; i++) {
             document.querySelector('.deck').appendChild(shuffledCardsArray[i]);
-        }
+        }   
 }
 
 newShuffledDeck(); 
@@ -100,35 +100,53 @@ for (let i = 0; i < cards.length; i++){
     cards[i].addEventListener("click", compareCards);
 }
 
+// function block clicks on cards by adding class with pointer-events: none;
+function disableClicks(){    
+       shuffledCardsArray.forEach(card => {
+           card.classList.add('avoid-clicks');
+       });
+}
+
+// function unblock clicks on cards by removing class with pointer-events: none;
+function enableClicks(){
+    shuffledCardsArray.forEach(card => {
+        card.classList.remove('avoid-clicks');
+    });
+}
+
 
 // function checking if cards are identical
 function compareCards() {
-    if(!this.classList.contains("show") && !this.classList.contains("open") ) {
+        if(!this.classList.contains("show") && !this.classList.contains("open") ) {
         openedCards.push(this);
         this.classList.toggle("open");
         this.classList.toggle("show");
     }
 
     if(openedCards.length == 2) {
+            // prevent to open more than 2 cards
+             disableClicks();
             // if cards are identical
             if(openedCards[0].querySelector('i').getAttribute('class')===openedCards[1].querySelector('i').getAttribute('class') ){
                 openedCards[0].classList.add('match');
                 openedCards[1].classList.add('match');
                 openedCards = [];
+                enableClicks();
             
         } else {
             //if cards are different
+        disableClicks();
         setTimeout(function(){
             openedCards[0].classList.toggle("open");
             openedCards[0].classList.toggle("show");
             openedCards[1].classList.toggle("open");
             openedCards[1].classList.toggle("show");
-            openedCards[0].classList.remove("disabled");
-            openedCards[1].classList.remove("disabled");
-            
+            //prevent to open more than 2 cards            
             openedCards = [];
-        }, 265);
+            enableClicks();
+        }, 300);
         }
+            
             moveCounter++;
             starRating();
             

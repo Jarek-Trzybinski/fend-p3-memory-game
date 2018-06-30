@@ -8,4 +8,7 @@ Jaroslaw Trzybinski
 
 ## Dependencies
 Html, JavaScript, Css, jquery
+The game is built on a on starter code from https://github.com/udacity/fend-project-memory-game
 Shuffle function from http://stackoverflow.com/a/2450976
+Font Awesome from https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css
+Google Fonts from https://fonts.googleapis.com/css?family=Coda
